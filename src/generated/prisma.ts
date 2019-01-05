@@ -4,24 +4,88 @@ import { Options } from 'graphql-binding'
 import { makePrismaBindingClass, BasePrismaOptions } from 'prisma-binding'
 
 export interface Query {
-    users: <T = User[]>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    user: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    usersConnection: <T = UserConnection>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    node: <T = Node | null>(args: { id: ID_Output }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
-  }
+  users: <T = User[]>(
+    args: {
+      where?: UserWhereInput
+      orderBy?: UserOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+    },
+    info?: GraphQLResolveInfo | string,
+    options?: Options,
+  ) => Promise<T>
+  user: <T = User | null>(
+    args: { where: UserWhereUniqueInput },
+    info?: GraphQLResolveInfo | string,
+    options?: Options,
+  ) => Promise<T>
+  usersConnection: <T = UserConnection>(
+    args: {
+      where?: UserWhereInput
+      orderBy?: UserOrderByInput
+      skip?: Int
+      after?: String
+      before?: String
+      first?: Int
+      last?: Int
+    },
+    info?: GraphQLResolveInfo | string,
+    options?: Options,
+  ) => Promise<T>
+  node: <T = Node | null>(
+    args: { id: ID_Output },
+    info?: GraphQLResolveInfo | string,
+    options?: Options,
+  ) => Promise<T>
+}
 
 export interface Mutation {
-    createUser: <T = User>(args: { data: UserCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateUser: <T = User | null>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteUser: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    upsertUser: <T = User>(args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyUsers: <T = BatchPayload>(args: { data: UserUpdateManyMutationInput, where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyUsers: <T = BatchPayload>(args: { where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
-  }
+  createUser: <T = User>(
+    args: { data: UserCreateInput },
+    info?: GraphQLResolveInfo | string,
+    options?: Options,
+  ) => Promise<T>
+  updateUser: <T = User | null>(
+    args: { data: UserUpdateInput; where: UserWhereUniqueInput },
+    info?: GraphQLResolveInfo | string,
+    options?: Options,
+  ) => Promise<T>
+  deleteUser: <T = User | null>(
+    args: { where: UserWhereUniqueInput },
+    info?: GraphQLResolveInfo | string,
+    options?: Options,
+  ) => Promise<T>
+  upsertUser: <T = User>(
+    args: {
+      where: UserWhereUniqueInput
+      create: UserCreateInput
+      update: UserUpdateInput
+    },
+    info?: GraphQLResolveInfo | string,
+    options?: Options,
+  ) => Promise<T>
+  updateManyUsers: <T = BatchPayload>(
+    args: { data: UserUpdateManyMutationInput; where?: UserWhereInput },
+    info?: GraphQLResolveInfo | string,
+    options?: Options,
+  ) => Promise<T>
+  deleteManyUsers: <T = BatchPayload>(
+    args: { where?: UserWhereInput },
+    info?: GraphQLResolveInfo | string,
+    options?: Options,
+  ) => Promise<T>
+}
 
 export interface Subscription {
-    user: <T = UserSubscriptionPayload | null>(args: { where?: UserSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> 
-  }
+  user: <T = UserSubscriptionPayload | null>(
+    args: { where?: UserSubscriptionWhereInput },
+    info?: GraphQLResolveInfo | string,
+    options?: Options,
+  ) => Promise<AsyncIterator<T>>
+}
 
 export interface Exists {
   User: (where?: UserWhereInput) => Promise<boolean>
@@ -32,22 +96,36 @@ export interface Prisma {
   mutation: Mutation
   subscription: Subscription
   exists: Exists
-  request: <T = any>(query: string, variables?: {[key: string]: any}) => Promise<T>
-  delegate(operation: 'query' | 'mutation', fieldName: string, args: {
-    [key: string]: any;
-}, infoOrQuery?: GraphQLResolveInfo | string, options?: Options): Promise<any>;
-delegateSubscription(fieldName: string, args?: {
-    [key: string]: any;
-}, infoOrQuery?: GraphQLResolveInfo | string, options?: Options): Promise<AsyncIterator<any>>;
-getAbstractResolvers(filterSchema?: GraphQLSchema | string): IResolvers;
+  request: <T = any>(
+    query: string,
+    variables?: { [key: string]: any },
+  ) => Promise<T>
+  delegate(
+    operation: 'query' | 'mutation',
+    fieldName: string,
+    args: {
+      [key: string]: any
+    },
+    infoOrQuery?: GraphQLResolveInfo | string,
+    options?: Options,
+  ): Promise<any>
+  delegateSubscription(
+    fieldName: string,
+    args?: {
+      [key: string]: any
+    },
+    infoOrQuery?: GraphQLResolveInfo | string,
+    options?: Options,
+  ): Promise<AsyncIterator<any>>
+  getAbstractResolvers(filterSchema?: GraphQLSchema | string): IResolvers
 }
 
 export interface BindingConstructor<T> {
-  new(options: BasePrismaOptions): T
+  new (options: BasePrismaOptions): T
 }
 /**
  * Type Defs
-*/
+ */
 
 const typeDefs = `type AggregateUser {
   count: Int!
@@ -353,24 +431,25 @@ input UserWhereUniqueInput {
 }
 `
 
-export const Prisma = makePrismaBindingClass<BindingConstructor<Prisma>>({typeDefs})
+export const Prisma = makePrismaBindingClass<BindingConstructor<Prisma>>({
+  typeDefs,
+})
 
 /**
  * Types
-*/
+ */
 
-export type UserOrderByInput =   'id_ASC' |
-  'id_DESC' |
-  'createdAt_ASC' |
-  'createdAt_DESC' |
-  'updatedAt_ASC' |
-  'updatedAt_DESC' |
-  'name_ASC' |
-  'name_DESC'
+export type UserOrderByInput =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
 
-export type MutationType =   'CREATED' |
-  'UPDATED' |
-  'DELETED'
+export type MutationType = 'CREATED' | 'UPDATED' | 'DELETED'
 
 export interface UserCreateInput {
   name: String

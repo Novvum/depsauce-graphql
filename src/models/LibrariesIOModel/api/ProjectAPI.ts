@@ -1,4 +1,4 @@
-import {Endpoint} from '../Endpoints';
+import { Endpoint } from '../Endpoints'
 import {
   Contributor,
   LibrariesIOResult,
@@ -9,14 +9,14 @@ import {
   ProjectWithDependencies,
   Repository,
   SearchOptions,
-} from '../interfaces/';
-import {RequestService} from '../RequestService';
+} from '../interfaces/'
+import { RequestService } from '../RequestService'
 
 export class ProjectAPI {
-  private readonly requestService: RequestService;
+  private readonly requestService: RequestService
 
   constructor(requestService: RequestService) {
-    this.requestService = requestService;
+    this.requestService = requestService
   }
 
   /**
@@ -25,9 +25,12 @@ export class ProjectAPI {
    * @param platform The project platform (e.g. "npm", "cargo", ...)
    * @param projectName The project name
    */
-  public getProject(platform: PlatformType, projectName: string): Promise<LibrariesIOResult<Project>> {
-    const endpoint = Endpoint.Project.project(platform, projectName);
-    return this.requestService.get(endpoint);
+  public getProject(
+    platform: PlatformType,
+    projectName: string,
+  ): Promise<LibrariesIOResult<Project>> {
+    const endpoint = Endpoint.Project.project(platform, projectName)
+    return this.requestService.get(endpoint)
   }
 
   /**
@@ -40,10 +43,14 @@ export class ProjectAPI {
   public getProjectWithDependencies(
     platform: PlatformType,
     projectName: string,
-    projectVersion: string
+    projectVersion: string,
   ): Promise<LibrariesIOResult<ProjectWithDependencies>> {
-    const endpoint = Endpoint.Project.dependencies(platform, projectName, projectVersion);
-    return this.requestService.get(endpoint);
+    const endpoint = Endpoint.Project.dependencies(
+      platform,
+      projectName,
+      projectVersion,
+    )
+    return this.requestService.get(endpoint)
   }
 
   /**
@@ -56,10 +63,10 @@ export class ProjectAPI {
   public getDependendents(
     platform: PlatformType,
     projectName: string,
-    options?: PaginationOptions
+    options?: PaginationOptions,
   ): Promise<LibrariesIOResult<Project[]>> {
-    const endpoint = Endpoint.Project.dependents(platform, projectName);
-    return this.requestService.get(endpoint, options);
+    const endpoint = Endpoint.Project.dependents(platform, projectName)
+    return this.requestService.get(endpoint, options)
   }
 
   /**
@@ -71,10 +78,10 @@ export class ProjectAPI {
   public getDependendentRepositories(
     platform: PlatformType,
     projectName: string,
-    options?: PaginationOptions
+    options?: PaginationOptions,
   ): Promise<LibrariesIOResult<Repository[]>> {
-    const endpoint = Endpoint.Project.dependents(platform, projectName);
-    return this.requestService.get(endpoint, options);
+    const endpoint = Endpoint.Project.dependents(platform, projectName)
+    return this.requestService.get(endpoint, options)
   }
 
   /**
@@ -87,10 +94,10 @@ export class ProjectAPI {
   public getContributors(
     platform: PlatformType,
     projectName: string,
-    options?: PaginationOptions
+    options?: PaginationOptions,
   ): Promise<LibrariesIOResult<Contributor[]>> {
-    const endpoint = Endpoint.Project.dependents(platform, projectName);
-    return this.requestService.get(endpoint, options);
+    const endpoint = Endpoint.Project.dependents(platform, projectName)
+    return this.requestService.get(endpoint, options)
   }
 
   /**
@@ -99,9 +106,12 @@ export class ProjectAPI {
    * @param platform The project platform (e.g. "npm", "cargo", ...)
    * @param projectName The project name
    */
-  public getSourceRank(platform: PlatformType, projectName: string): Promise<LibrariesIOResult<number>> {
-    const endpoint = Endpoint.Project.sourceRank(platform, projectName);
-    return this.requestService.get(endpoint);
+  public getSourceRank(
+    platform: PlatformType,
+    projectName: string,
+  ): Promise<LibrariesIOResult<number>> {
+    const endpoint = Endpoint.Project.sourceRank(platform, projectName)
+    return this.requestService.get(endpoint)
   }
 
   /**
@@ -109,9 +119,12 @@ export class ProjectAPI {
    * @param platform The project platform (e.g. "npm", "cargo", ...)
    * @param projectName The project name
    */
-  public getUsage(platform: PlatformType, projectName: string): Promise<LibrariesIOResult<ProjectUsage>> {
-    const endpoint = Endpoint.Project.sourceRank(platform, projectName);
-    return this.requestService.get(endpoint);
+  public getUsage(
+    platform: PlatformType,
+    projectName: string,
+  ): Promise<LibrariesIOResult<ProjectUsage>> {
+    const endpoint = Endpoint.Project.sourceRank(platform, projectName)
+    return this.requestService.get(endpoint)
   }
 
   /**
@@ -120,8 +133,11 @@ export class ProjectAPI {
    * @param query The search query
    * @param options Sorting, filter and pagination options
    */
-  public search(query: string, options?: SearchOptions): Promise<LibrariesIOResult<Project[]>> {
-    const endpoint = Endpoint.Project.search();
-    return this.requestService.get(endpoint, {...options, query});
+  public search(
+    query: string,
+    options?: SearchOptions,
+  ): Promise<LibrariesIOResult<Project[]>> {
+    const endpoint = Endpoint.Project.search()
+    return this.requestService.get(endpoint, { ...options, query })
   }
 }

@@ -1,28 +1,34 @@
-import {URL} from 'url';
+import { URL } from 'url'
 
-import {GitHubRepositoryAPI, GitHubUserAPI, PlatformAPI, ProjectAPI, UserAPI} from './api/';
-import {API, ClientOptions} from './interfaces/';
-import {RequestService} from './RequestService';
+import {
+  GitHubRepositoryAPI,
+  GitHubUserAPI,
+  PlatformAPI,
+  ProjectAPI,
+  UserAPI,
+} from './api/'
+import { API, ClientOptions } from './interfaces/'
+import { RequestService } from './RequestService'
 
 export class LibrariesIO {
-  private readonly requestService: RequestService;
-  private readonly options: ClientOptions;
-  public readonly api: API;
+  private readonly requestService: RequestService
+  private readonly options: ClientOptions
+  public readonly api: API
 
-  constructor(apiKey: string);
-  constructor(options: ClientOptions);
+  constructor(apiKey: string)
+  constructor(options: ClientOptions)
   constructor(options: ClientOptions | string) {
     if (typeof options === 'string') {
-      options = {apiKey: options};
+      options = { apiKey: options }
     }
 
-    this.options = options;
+    this.options = options
 
     if (!this.options.apiKey) {
-      throw new Error('An API key needs to be set in order to use the client.');
+      throw new Error('An API key needs to be set in order to use the client.')
     }
 
-    this.requestService = new RequestService(options);
+    this.requestService = new RequestService(options)
 
     this.api = {
       github: {
@@ -32,7 +38,7 @@ export class LibrariesIO {
       platform: new PlatformAPI(this.requestService),
       project: new ProjectAPI(this.requestService),
       user: new UserAPI(this.requestService),
-    };
+    }
   }
 
   /**
@@ -40,6 +46,6 @@ export class LibrariesIO {
    * @param newUrl The new API url
    */
   public setApiUrl(newUrl: URL): void {
-    this.requestService.setApiUrl(newUrl);
+    this.requestService.setApiUrl(newUrl)
   }
 }

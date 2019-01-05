@@ -1,12 +1,17 @@
-import {Endpoint} from '../../Endpoints';
-import {LibrariesIOResult, PaginationOptions, Project, RepositoryWithDependencies} from '../../interfaces/';
-import {RequestService} from '../../RequestService';
+import { Endpoint } from '../../Endpoints'
+import {
+  LibrariesIOResult,
+  PaginationOptions,
+  Project,
+  RepositoryWithDependencies,
+} from '../../interfaces/'
+import { RequestService } from '../../RequestService'
 
 export class GitHubRepositoryAPI {
-  private readonly requestService: RequestService;
+  private readonly requestService: RequestService
 
   constructor(requestService: RequestService) {
-    this.requestService = requestService;
+    this.requestService = requestService
   }
 
   /**
@@ -17,10 +22,13 @@ export class GitHubRepositoryAPI {
    */
   public getRepository(
     repositoryOwner: string,
-    repositoryName: string
+    repositoryName: string,
   ): Promise<LibrariesIOResult<RepositoryWithDependencies>> {
-    const endpoint = Endpoint.GitHub.Repository.repository(repositoryOwner, repositoryName);
-    return this.requestService.get(endpoint);
+    const endpoint = Endpoint.GitHub.Repository.repository(
+      repositoryOwner,
+      repositoryName,
+    )
+    return this.requestService.get(endpoint)
   }
 
   /**
@@ -31,10 +39,13 @@ export class GitHubRepositoryAPI {
    */
   public getRepositoryWithDependencies(
     repositoryOwner: string,
-    repositoryName: string
+    repositoryName: string,
   ): Promise<LibrariesIOResult<RepositoryWithDependencies>> {
-    const endpoint = Endpoint.GitHub.Repository.dependencies(repositoryOwner, repositoryName);
-    return this.requestService.get(endpoint);
+    const endpoint = Endpoint.GitHub.Repository.dependencies(
+      repositoryOwner,
+      repositoryName,
+    )
+    return this.requestService.get(endpoint)
   }
 
   /**
@@ -47,9 +58,12 @@ export class GitHubRepositoryAPI {
   public getProjects(
     repositoryOwner: string,
     repositoryName: string,
-    options?: PaginationOptions
+    options?: PaginationOptions,
   ): Promise<LibrariesIOResult<Project[]>> {
-    const endpoint = Endpoint.GitHub.Repository.projects(repositoryOwner, repositoryName);
-    return this.requestService.get(endpoint, options);
+    const endpoint = Endpoint.GitHub.Repository.projects(
+      repositoryOwner,
+      repositoryName,
+    )
+    return this.requestService.get(endpoint, options)
   }
 }

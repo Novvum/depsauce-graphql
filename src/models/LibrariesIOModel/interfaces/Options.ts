@@ -1,4 +1,4 @@
-import {URL} from 'url';
+import { URL } from 'url'
 
 export type SortType =
   | 'contributions_count'
@@ -7,41 +7,41 @@ export type SortType =
   | 'dependents_count'
   | 'latest_release_published_at'
   | 'rank'
-  | 'stars';
+  | 'stars'
 
 export interface FilterOptions {
-  keywords?: string[];
-  languages?: string[];
-  licenses?: string[];
-  platforms?: PlatformType[];
+  keywords?: string[]
+  languages?: string[]
+  licenses?: string[]
+  platforms?: PlatformType[]
 }
 
 export interface ClientOptions {
-  apiKey: string;
-  apiUrl?: URL;
+  apiKey: string
+  apiUrl?: URL
 }
 
 export interface PreReleaseOptions {
-  includePreRelease?: boolean;
+  includePreRelease?: boolean
 }
 
 export interface PaginationOptions {
-  page?: number;
-  perPage?: number;
+  page?: number
+  perPage?: number
 }
 
 export interface SearchOptions extends PaginationOptions {
-  sortBy?: SortType;
-  filter?: FilterOptions;
+  sortBy?: SortType
+  filter?: FilterOptions
 }
 
 export interface RequestOptions extends SearchOptions, PreReleaseOptions {
-  apiKey?: string;
-  platform?: PlatformType;
-  query?: string;
+  apiKey?: string
+  platform?: PlatformType
+  query?: string
 }
 
-export type HttpMethod = 'delete' | 'get' | 'post' | 'put';
+export type HttpMethod = 'delete' | 'get' | 'post' | 'put'
 
 export enum HttpStatus {
   FORBIDDEN = 403,
@@ -85,4 +85,4 @@ export type PlatformType =
   | 'rubygems'
   | 'sublime'
   | 'swiftpm'
-  | 'wordpress';
+  | 'wordpress'

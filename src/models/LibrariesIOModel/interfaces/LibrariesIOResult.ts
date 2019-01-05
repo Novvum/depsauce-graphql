@@ -1,9 +1,9 @@
 export interface LibrariesIOHeaders {
-  rateLimit: number;
-  rateLimitRemaining: number;
+  rateLimit: number
+  rateLimitRemaining: number
 }
 
 export interface LibrariesIOResult<T> extends LibrariesIOHeaders {
-  data: T;
-  totalResults?: number;
+  data: T
+  totalResults?: number
 }

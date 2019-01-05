@@ -1,2 +1,2 @@
-export * from './GitHubRepositoryAPI';
-export * from './GitHubUserAPI';
+export * from './GitHubRepositoryAPI'
+export * from './GitHubUserAPI'

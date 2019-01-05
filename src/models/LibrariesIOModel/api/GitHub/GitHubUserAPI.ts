@@ -1,4 +1,4 @@
-import {Endpoint} from '../../Endpoints';
+import { Endpoint } from '../../Endpoints'
 import {
   Contributor,
   LibrariesIOResult,
@@ -7,14 +7,14 @@ import {
   Project,
   Repository,
   RequestOptions,
-} from '../../interfaces/';
-import {RequestService} from '../../RequestService';
+} from '../../interfaces/'
+import { RequestService } from '../../RequestService'
 
 export class GitHubUserAPI {
-  private readonly requestService: RequestService;
+  private readonly requestService: RequestService
 
   constructor(requestService: RequestService) {
-    this.requestService = requestService;
+    this.requestService = requestService
   }
 
   /**
@@ -23,8 +23,8 @@ export class GitHubUserAPI {
    * @param userName The username
    */
   public getUser(userName: string): Promise<LibrariesIOResult<Contributor>> {
-    const endpoint = Endpoint.GitHub.User.user(userName);
-    return this.requestService.get(endpoint);
+    const endpoint = Endpoint.GitHub.User.user(userName)
+    return this.requestService.get(endpoint)
   }
 
   /**
@@ -33,9 +33,12 @@ export class GitHubUserAPI {
    * @param userName The username
    * @param options Pagination options
    */
-  public getRepositories(userName: string, options?: PaginationOptions): Promise<LibrariesIOResult<Repository[]>> {
-    const endpoint = Endpoint.GitHub.User.repositories(userName);
-    return this.requestService.get(endpoint, options);
+  public getRepositories(
+    userName: string,
+    options?: PaginationOptions,
+  ): Promise<LibrariesIOResult<Repository[]>> {
+    const endpoint = Endpoint.GitHub.User.repositories(userName)
+    return this.requestService.get(endpoint, options)
   }
 
   /**
@@ -44,9 +47,12 @@ export class GitHubUserAPI {
    * @param userName The username
    * @param options Pagination options
    */
-  public getProjects(userName: string, options?: PaginationOptions): Promise<LibrariesIOResult<Project[]>> {
-    const endpoint = Endpoint.GitHub.User.repositories(userName);
-    return this.requestService.get(endpoint, options);
+  public getProjects(
+    userName: string,
+    options?: PaginationOptions,
+  ): Promise<LibrariesIOResult<Project[]>> {
+    const endpoint = Endpoint.GitHub.User.repositories(userName)
+    return this.requestService.get(endpoint, options)
   }
 
   /**
@@ -55,9 +61,12 @@ export class GitHubUserAPI {
    * @param userName The username
    * @param options Pagination options
    */
-  public getContributedProjects(userName: string, options?: PaginationOptions): Promise<LibrariesIOResult<Project[]>> {
-    const endpoint = Endpoint.GitHub.User.contributedProjects(userName);
-    return this.requestService.get(endpoint, options);
+  public getContributedProjects(
+    userName: string,
+    options?: PaginationOptions,
+  ): Promise<LibrariesIOResult<Project[]>> {
+    const endpoint = Endpoint.GitHub.User.contributedProjects(userName)
+    return this.requestService.get(endpoint, options)
   }
 
   /**
@@ -68,18 +77,21 @@ export class GitHubUserAPI {
    */
   public getContributedRepositories(
     userName: string,
-    options?: PaginationOptions
+    options?: PaginationOptions,
   ): Promise<LibrariesIOResult<Repository[]>> {
-    const endpoint = Endpoint.GitHub.User.contributedRepositories(userName);
-    return this.requestService.get(endpoint, options);
+    const endpoint = Endpoint.GitHub.User.contributedRepositories(userName)
+    return this.requestService.get(endpoint, options)
   }
 
-  public getDependencies(userName: string, options?: PaginationOptions): Promise<LibrariesIOResult<Project[]>>;
+  public getDependencies(
+    userName: string,
+    options?: PaginationOptions,
+  ): Promise<LibrariesIOResult<Project[]>>
   public getDependencies(
     userName: string,
     platform?: PlatformType,
-    options?: PaginationOptions
-  ): Promise<LibrariesIOResult<Project[]>>;
+    options?: PaginationOptions,
+  ): Promise<LibrariesIOResult<Project[]>>
   /**
    * Get a list of unique packages that the given user's repositories list as a dependency. Ordered by frequency of use in those repositories.
    * @see https://libraries.io/api#user-dependencies
@@ -90,22 +102,22 @@ export class GitHubUserAPI {
   public getDependencies(
     userName: string,
     platformOrOptions?: PlatformType | PaginationOptions,
-    options?: PaginationOptions
+    options?: PaginationOptions,
   ): Promise<LibrariesIOResult<Project[]>> {
-    const endpoint = Endpoint.GitHub.User.contributedRepositories(userName);
-    let parameters: RequestOptions = {};
+    const endpoint = Endpoint.GitHub.User.contributedRepositories(userName)
+    let parameters: RequestOptions = {}
 
     if (platformOrOptions) {
       if (typeof platformOrOptions === 'string') {
         parameters = {
           platform: platformOrOptions,
           ...options,
-        };
+        }
       } else {
-        parameters = platformOrOptions;
+        parameters = platformOrOptions
       }
     }
 
-    return this.requestService.get(endpoint, parameters);
+    return this.requestService.get(endpoint, parameters)
   }
 }
