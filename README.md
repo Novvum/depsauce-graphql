@@ -26,18 +26,25 @@ Read more about the idea behind GraphQL boilerplates [here](https://blog.graph.c
 # 1. Clone this repo
 git clone https://github.com/Novvum/librariesio-graphql-api.git
 
-# 2. When prompted, deploy the Prisma service to a _public cluster_
+# 2. Navigate to the new project
+cd librariesio-graphql-api
 
-# 3. Navigate to the new project
-cd my-app
+# 3 Install Dependencies
+yarn
+# ---- or ----
+npm i
 
 # 4. Start server (runs on http://localhost:4000) and open GraphQL Playground
 yarn dev
+# ---- or ----
+npm run dev
 ```
 
 ![](https://imgur.com/hElq68i.png)
 
 ## Documentation
+
+- WIP
 
 ### Commands
 
