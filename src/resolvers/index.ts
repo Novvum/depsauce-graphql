@@ -1,5 +1,5 @@
 import { Query } from './Query'
-import { Github } from './Github'
+import { GithubRepository, GithubUser } from './Github'
 import { makeExecutableSchema } from 'graphql-tools'
 import { extractFragmentReplacements } from 'prisma-binding'
 import { FragmentReplacement } from 'graphql-binding'
@@ -9,7 +9,8 @@ import * as path from 'path'
 
 const resolvers: any = {
   Query,
-  Github,
+  GithubRepository,
+  GithubUser,
 }
 
 const mergedSchema: MergeSchemaHelper = new MergeSchemaHelper()

@@ -1,5 +1,5 @@
 import { Context } from '../utils/getContext'
-import { Github } from './Github'
+
 export const Query = {
   async getContributors(_, args, ctx: Context, info) {
     return await ctx.libs.api.project
@@ -54,7 +54,6 @@ export const Query = {
       .getPlatforms(...args)
       .then(res => res.data)
   },
-  github: {
-    ...Github,
-  },
+  githubRepository: () => ({}),
+  githubUser: () => ({}),
 }

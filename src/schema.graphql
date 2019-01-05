@@ -25,12 +25,8 @@ type Query {
 	getUsage(platform: PlatformType!, projectName: String!): ProjectUsage
 	search(query: String!, options: SearchOptions): [Project]
 	getPlatforms(options: PaginationOptions): [Platform]
-	github: Github
-}
-
-type Github {
-	repository: GithubRepository
-	user: GithubUser
+	githubRepository: GithubRepository
+	githubUser: GithubUser
 }
 
 type GithubRepository {

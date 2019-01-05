@@ -1,6 +1,6 @@
 import { Context } from '../utils/getContext'
 
-const GithubRepository = {
+export const GithubRepository = {
   async getRepository(_, args, ctx: Context, info) {
     if (args.withDependencies) {
       return await ctx.libs.api.github.repository
@@ -21,7 +21,7 @@ const GithubRepository = {
   },
 }
 
-const GithubUser = {
+export const GithubUser = {
   async getUser(_, args, ctx: Context, info) {
     return await ctx.libs.api.github.user
       .getUser(args.username)
@@ -52,9 +52,4 @@ const GithubUser = {
       .getDependencies(args.username, args.platform, args.options)
       .then(res => res.data)
   },
-}
-
-export const Github = {
-  repository: GithubRepository,
-  user: GithubUser,
 }
