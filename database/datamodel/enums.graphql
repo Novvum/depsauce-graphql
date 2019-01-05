@@ -1,0 +1,8 @@
+enum FavoriteMarvelType {
+	CHARACTER
+	COMIC
+	SERIES
+	STORY
+	EVENT
+	CREATOR
+}
