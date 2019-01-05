@@ -6,7 +6,7 @@
 		"debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/index.ts",
 		"playground": "graphql playground",
 		"build": "rimraf dist && tsc",
-		"apollo:publish": "apollo schema:publish --endpoint='hello' --key='service:graphql-directory-7184:hV9MEAbFVyJMOFdI-bCbGA'",
+		"apollo:publish": "apollo schema:publish --endpoint='https://librariesio-graphql.now.sh/' --key='service:graphql-directory-7184:hV9MEAbFVyJMOFdI-bCbGA'",
 		"prettier": "prettier --single-quote --no-semi --trailing-comma all --write *.{ts,tsx} 'src/**/*.{ts,tsx}'"
 	},
 	"dependencies": {
