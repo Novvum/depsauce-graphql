@@ -1,5 +1,5 @@
 {
-	"name": "spotlight",
+	"name": "librariesio-graphql",
 	"scripts": {
 		"start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
 		"dev": "npm-run-all --parallel start playground",
@@ -36,5 +36,8 @@
 		"rimraf": "2.6.2",
 		"ts-node": "6.2.0",
 		"typescript": "2.9.2"
+	},
+	"resolutions": {
+		"**/event-stream": "^4.0.1"
 	}
 }
