@@ -84,67 +84,67 @@ type Contributor {
 	bio: String
 	blog: String
 	company: String
-	created_at: String!
+	created_at: String
 	email: String
-	followers: Int!
-	following: Int!
-	github_id: String!
+	followers: Int
+	following: Int
+	github_id: String
 	hidden: Boolean
-	host_type: String!
-	last_synced_at: String!
+	host_type: String
+	last_synced_at: String
 	location: String
-	login: String!
-	name: String!
-	updated_at: String!
-	user_type: String!
-	uuid: String!
+	login: String
+	name: String
+	updated_at: String
+	user_type: String
+	uuid: String
 }
 
 type Project {
-	dependent_repos_count: Int!
-	dependents_count: Int!
+	dependent_repos_count: Int
+	dependents_count: Int
 	description: String
-	forks: Int!
+	forks: Int
 	homepage: String
-	keywords: [String!]
+	keywords: [String]
 	language: String
 	latest_download_url: String
 	latest_release_number: String
 	latest_release_published_at: String
 	latest_stable_release: ProjectRelease
 	name: String
-	normalized_licenses: [String!]
+	normalized_licenses: [String]
 	package_manager_url: String
 	platform: String
-	rank: Int!
+	rank: Int
 	repository_url: String
-	stars: Int!
+	stars: Int
 	status: String
-	versions: [ProjectVersion!]
+	versions: [ProjectVersion]
 	dependencies_for_version: String
 	dependencies: [ProjectDependency]
 }
 
 type ProjectUsage {
-	basic_info_present: Int!
-	repository_present: Int!
-	readme_present: Int!
-	license_present: Int!
-	versions_present: Int!
-	follows_semver: Int!
-	recent_release: Int!
-	not_brand_new: Int!
-	one_point_oh: Int!
-	dependent_projects: Int!
-	dependent_repositories: Int!
-	stars: Int!
-	contributors: Int!
-	subscribers: Int!
-	all_prereleases: Int!
-	any_outdated_dependencies: Int!
-	is_deprecated: Int!
-	is_unmaintained: Int!
-	is_removed: Int!
+	basic_info_present: Int
+	repository_present: Int
+	readme_present: Int
+	license_present: Int
+	versions_present: Int
+	follows_semver: Int
+	recent_release: Int
+	not_brand_new: Int
+	one_point_oh: Int
+	dependent_projects: Int
+	dependent_repositories: Int
+	stars: Int
+	contributors: Int
+	subscribers: Int
+	all_prereleases: Int
+	any_outdated_dependencies: Int
+	is_deprecated: Int
+	is_unmaintained: Int
+	is_removed: Int
 }
 
 enum ProjectDependencyKind {
@@ -168,9 +168,9 @@ type ProjectDependency {
 
 type ProjectRelease {
 	created_at: String
-	id: Int!
+	id: Int
 	number: String
-	project_id: Int!
+	project_id: Int
 	published_at: String
 	runtime_dependencies_count: Int
 	updated_at: String
@@ -178,7 +178,7 @@ type ProjectRelease {
 
 type ProjectUsage {
 	version: String
-	usage: Int!
+	usage: Int
 }
 
 type ProjectVersion {
@@ -244,10 +244,10 @@ enum SortType {
 }
 
 input FilterOptions {
-	keywords: [String!]
-	languages: [String!]
-	licenses: [String!]
-	platforms: [PlatformType!]
+	keywords: [String]
+	languages: [String]
+	licenses: [String]
+	platforms: [PlatformType]
 }
 
 type Platform {
