@@ -52,17 +52,7 @@ export interface IssuesSchema {
 }
 
 export interface DistributionSchema {
-	10800: number;
-	212576400: number;
-	23619600: number;
-	2624400: number;
-	291600: number;
-	32400: number;
-	3600: number;
-	70858800: number;
-	7873200: number;
-	874800: number;
-	97200: number;
+	[version: string]: number;
 }
 
 export interface StatusElement {

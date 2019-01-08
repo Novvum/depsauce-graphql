@@ -45,6 +45,7 @@ export interface ResultElement {
 
 	flags?: FlagsElement;
 	searchScore: number;
+	highlight?: string;
 }
 
 export interface FlagsElement {

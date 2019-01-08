@@ -3,6 +3,11 @@
 # import * from "./librariesio.graphql"
 
 type Query {
+	lib: LibrariesIO
+	npm: NPMSIO
+}
+
+type LibrariesIO {
 	getContributors(
 		platform: PlatformType!
 		projectName: String!
@@ -29,13 +34,23 @@ type Query {
 	getPlatforms(options: PaginationOptions): [Platform]
 	githubRepository: GithubRepository
 	githubUser: GithubUser
-	npm: NPMSIO
 }
 
 type NPMSIO {
 	search(
-		query: String
+		query: String!
 		options: SearchParams
 		filter: Filters
 	): SearchCoordinate
+	suggestions(
+		query: String!
+		options: SuggestionParams
+		filter: Filters
+	): [ResultElement]
+	package(name: String!): PackageCoordinates
+	packages(names: [String!]): [Package]
+}
+
+input SuggestionParams {
+	size: String
 }

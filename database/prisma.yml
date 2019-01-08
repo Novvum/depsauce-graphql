@@ -1,10 +1,12 @@
 # The endpoint of your Prisma API (deployed to a Prisma Sandbox).
-endpoint: ${env:PRISMA_ENDPOINT}
+#endpoint: ${env:PRISMA_ENDPOINT}
+#endpoint: ${env:PRISMA_ENDPOINT}/${env:PRISMA_APP_STAGE}
+endpoint: https://us1.prisma.sh/raj-singh/depsauce/dev
 
 # The file containing the definition of your data model.
 datamodel:
   - datamodel/types.graphql
-  # - datamodel/enums.graphql
+  - datamodel/enums.graphql
 
 # Seed your service with initial data based on `seed.graphql`.
 # seed:

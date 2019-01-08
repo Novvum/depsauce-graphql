@@ -1,8 +1,3 @@
-enum FavoriteMarvelType {
-	CHARACTER
-	COMIC
-	SERIES
-	STORY
-	EVENT
-	CREATOR
+enum FavoritePlatformType {
+	NPM
 }

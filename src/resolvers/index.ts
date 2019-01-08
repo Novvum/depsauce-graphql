@@ -7,9 +7,11 @@ import { MergeSchemaHelper } from '../utils/MergeSchemaHelper';
 import { importSchema } from 'graphql-import';
 import * as path from 'path';
 import { NPMSIO } from './NPMSIO';
+import { LibrariesIO } from './LibrariesIO';
 
 const resolvers: any = {
 	Query,
+	LibrariesIO,
 	NPMSIO,
 	GithubRepository,
 	GithubUser
