@@ -25,7 +25,7 @@ export class RequestService {
 			const q = args.q;
 			delete args['q'];
 			const string = await qs.stringify({ ...args });
-			return `${q}${string !== '' ? '&' + string : ''}`;
+			return `q=${q}${string !== '' ? '&' + string : ''}`;
 		}
 		return await qs.stringify({ ...args });
 	}

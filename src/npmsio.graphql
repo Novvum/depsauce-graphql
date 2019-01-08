@@ -1,4 +1,4 @@
-# import * from "../generated/prisma.graphql"
+# import * from "./generated/prisma.graphql"
 
 type Popularity {
 	communityInterest: Int
@@ -159,7 +159,7 @@ type CommitElement {
 	to: String
 }
 
-type Package {
+type PackageCoordinates {
 	analyzedAt: String
 	collected: Collected
 	evaluation: Evaluation
@@ -186,4 +186,97 @@ type Github {
 
 input PackageParams {
 	name: String
+}
+
+input SearchParams {
+	from: String
+	size: String
+}
+
+type SearchCoordinate {
+	results: [ResultElement]
+	total: Int
+}
+
+input Filters {
+	author: String
+	maintainer: String
+	keywords: [String]
+	not: [SearchNotType]
+	is: [SearchIsType]
+	boostExact: Boolean
+	scoreEffect: Int
+	qualityWeight: Int
+	popularityWeight: Int
+	maintenanceWeight: Int
+}
+
+enum SearchNotType {
+	unstable
+	insecure
+}
+
+enum SearchIsType {
+	deprecated
+	unstable
+	insecure
+}
+
+type ResultElement {
+	package: Package
+	score: Score
+	flags: FlagsElement
+	searchScore: Float
+}
+
+type FlagsElement {
+	deprecated: String
+	insecure: Boolean
+	unstable: Boolean
+}
+
+type Package {
+	author: Author
+	date: String
+	description: String
+	keywords: [String]
+	links: Links
+	maintainers: [MaintainerElement]
+	name: String
+	publisher: Publisher
+	scope: String
+	version: String
+}
+
+type Author {
+	email: String
+	name: String
+}
+
+type Links {
+	bugs: String
+	homepage: String
+	npm: String
+	repository: String
+}
+
+type MaintainerElement {
+	email: String
+	username: String
+}
+
+type Publisher {
+	email: String
+	username: String
+}
+
+type Score {
+	detail: Detail
+	final: Float
+}
+
+type Detail {
+	maintenance: Float
+	popularity: Float
+	quality: Float
 }

@@ -32,12 +32,9 @@ export class SearchModel extends RequestService {
 		} else {
 			q = query;
 		}
-		const searchParams = {
-			...args.options,
-			q
-		};
 		const params = await this.createParams({
-			...searchParams
+			q,
+			...args.options
 		});
 		return params;
 	}
@@ -47,9 +44,10 @@ export class SearchModel extends RequestService {
 		filters?: FilterOptions;
 	}): Promise<SearchCoordinate> {
 		try {
-			const params = this.formatSearchParams(args);
+			const params = await this.formatSearchParams(args);
 			return await this.npms.get(`/search?${params}`);
 		} catch (e) {
+			console.log(e);
 			return e;
 		}
 	}
@@ -60,9 +58,10 @@ export class SearchModel extends RequestService {
 		filters?: FilterOptions;
 	}) {
 		try {
-			const params = this.formatSearchParams(args);
+			const params = await this.formatSearchParams(args);
 			return await this.npms.get(`/search/suggestions?${params}`);
 		} catch (e) {
+			console.log(e);
 			return e;
 		}
 	}

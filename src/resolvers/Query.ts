@@ -55,5 +55,6 @@ export const Query = {
 			.then((res) => res.data);
 	},
 	githubRepository: () => ({}),
-	githubUser: () => ({})
+	githubUser: () => ({}),
+	npm: () => ({})
 };
