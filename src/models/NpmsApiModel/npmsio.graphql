@@ -1,0 +1,189 @@
+# import * from "../generated/prisma.graphql"
+
+type Popularity {
+	communityInterest: Int
+	dependentsCount: Int
+	downloadsAcceleration: Int
+	downloadsCount: Int
+}
+
+type Quality {
+	branding: Int
+	carefulness: Int
+	health: Int
+	tests: Int
+}
+
+type Maintenance {
+	commitsFrequency: Int
+	issuesDistribution: Int
+	openIssues: Int
+	releasesFrequency: Int
+}
+
+type Evaluation {
+	maintenance: Maintenance
+	popularity: Popularity
+	quality: Quality
+}
+
+type Files {
+	hasNpmIgnore: Boolean
+	readmeSize: Int
+	testsSize: Int
+}
+
+type Urls {
+	content: String
+	original: String
+	service: String
+	shields: String
+}
+
+type Modifiers {
+	branch: String
+}
+
+type Info {
+	modifiers: Modifiers
+	service: String
+	type: String
+}
+
+type BadgeElement {
+	info: Info
+	urls: Urls
+}
+
+type Source {
+	badges: [BadgeElement]
+	coverage: [Int]
+	files: Files
+	linters: [String]
+}
+
+type DownloadElement {
+	count: Int
+	from: String
+	to: String
+}
+
+type Npm {
+	dependentsCount: Int
+	downloads: [DownloadElement]
+	starsCount: Int
+}
+
+type Repository {
+	type: String
+	url: String
+}
+
+type ReleaseElement {
+	count: Int
+	from: String
+	to: String
+}
+
+type Metadata {
+	date: String
+	dependencies: Dependencies
+	description: String
+	devDependencies: Devdependencies
+	hasTestScript: Boolean
+	keywords: [string]
+	license: String
+	links: Links
+	maintainers: [MaintainerElement]
+	name: String
+	publisher: Publisher
+	readme: String
+	releases: [ReleaseElement]
+	repository: Repository
+	scope: String
+	version: String
+}
+
+type Dependencies {
+	iterall: String
+}
+
+type Devdependencies {
+	babelCLI: String
+	babelCore: String
+	babelPluginProposalClassProperties: String
+	babelPluginProposalObjectRESTSpread: String
+	babelPluginSyntaxAsyncGenerators: String
+	babelPluginTransformClasses: String
+	babelPluginTransformDestructuring: String
+	babelPluginTransformFlowStripTypes: String
+	babelPluginTransformSpread: String
+	babelPolyfill: String
+	babelPresetEnv: String
+	babelRegister: String
+	babelEslint: String
+	beautifyBenchmark: String
+	benchmark: String
+	chai: String
+	coveralls: String
+	eslint: String
+	eslintPluginFlowtype: String
+	eslintPluginPrettier: String
+	flowBin: String
+	mocha: String
+	nyc: String
+	prettier: String
+	sane: String
+}
+
+type StatusElement {
+	context: String
+	state: String
+}
+
+type Issues {
+	count: Int
+	distribution: Distribution
+	isDisabled: Boolean
+	openCount: Int
+}
+
+type ContributorElement {
+	commitsCount: Int
+	username: String
+}
+
+type CommitElement {
+	count: Int
+	from: String
+	to: String
+}
+
+type Package {
+	analyzedAt: String
+	collected: Collected
+	evaluation: Evaluation
+	score: Score
+}
+
+type Collected {
+	github: Github
+	metadata: Metadata
+	npm: Npm
+	source: Source
+}
+
+type Github {
+	commits: [CommitElement]
+	contributors: [ContributorElement]
+	forksCount: Int
+	homepage: String
+	issues: Issues
+	starsCount: Int
+	statuses: [StatusElement]
+	subscribersCount: Int
+}
+
+input PackageParams {
+	name: String
+}
