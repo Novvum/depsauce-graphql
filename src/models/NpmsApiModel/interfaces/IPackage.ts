@@ -4,11 +4,15 @@ import {
 	PublisherSchema,
 	MaintainerElement
 } from './ICommon';
+
+export interface PackageParams {
+	name?: string;
+}
 export interface PackageCoordinate {
-	analyzedAt: string;
-	collected: CollectedSchema;
-	evaluation: EvaluationSchema;
-	score: ScoreSchema;
+	analyzedAt?: string;
+	collected?: CollectedSchema;
+	evaluation?: EvaluationSchema;
+	score?: ScoreSchema;
 }
 
 export interface CollectedSchema {
