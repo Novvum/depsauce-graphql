@@ -1,6 +1,6 @@
-# import * from "./generated/prisma.graphql"
 # import * from "./npmsio.graphql"
 # import * from "./librariesio.graphql"
+scalar JSON
 
 type Query {
 	lib: LibrariesIO

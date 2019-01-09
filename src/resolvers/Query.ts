@@ -1,6 +1,6 @@
-import { Context } from '../utils/getContext';
+import { Context } from '../utils/getContext'
 
 export const Query = {
-	lib: () => ({}),
-	npm: () => ({})
-};
+  lib: () => ({}),
+  npm: () => ({}),
+}

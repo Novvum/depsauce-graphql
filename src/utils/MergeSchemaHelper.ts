@@ -13,7 +13,7 @@ export class MergeSchemaHelper {
   schemas: Array<GraphQLSchema | string>
   onTypeConflict?: (
     left: GraphQLNamedType,
-    right: GraphQLNamedType,
+    right: GraphQLNamedType
   ) => GraphQLNamedType
   resolvers?: Array<IResolvers | ((mergeInfo: MergeInfo) => IResolvers)>
   constructor() {
@@ -27,12 +27,12 @@ export class MergeSchemaHelper {
     this.schemas.push(...schemas)
   }
   addResolver(
-    resolvers: ((mergeInfo: MergeInfo) => IResolvers) | IResolvers,
+    resolvers: ((mergeInfo: MergeInfo) => IResolvers) | IResolvers
   ): void {
     this.resolvers.push(resolvers)
   }
   addResolvers(
-    resolvers: Array<((mergeInfo: MergeInfo) => IResolvers) | IResolvers>,
+    resolvers: Array<((mergeInfo: MergeInfo) => IResolvers) | IResolvers>
   ): void {
     this.resolvers.push(...resolvers)
   }

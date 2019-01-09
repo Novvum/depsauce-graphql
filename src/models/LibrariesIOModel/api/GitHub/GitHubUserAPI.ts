@@ -35,7 +35,7 @@ export class GitHubUserAPI {
    */
   public getRepositories(
     userName: string,
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Repository[]>> {
     const endpoint = Endpoint.GitHub.User.repositories(userName)
     return this.requestService.get(endpoint, options)
@@ -49,7 +49,7 @@ export class GitHubUserAPI {
    */
   public getProjects(
     userName: string,
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Project[]>> {
     const endpoint = Endpoint.GitHub.User.repositories(userName)
     return this.requestService.get(endpoint, options)
@@ -63,7 +63,7 @@ export class GitHubUserAPI {
    */
   public getContributedProjects(
     userName: string,
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Project[]>> {
     const endpoint = Endpoint.GitHub.User.contributedProjects(userName)
     return this.requestService.get(endpoint, options)
@@ -77,7 +77,7 @@ export class GitHubUserAPI {
    */
   public getContributedRepositories(
     userName: string,
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Repository[]>> {
     const endpoint = Endpoint.GitHub.User.contributedRepositories(userName)
     return this.requestService.get(endpoint, options)
@@ -85,12 +85,12 @@ export class GitHubUserAPI {
 
   public getDependencies(
     userName: string,
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Project[]>>
   public getDependencies(
     userName: string,
     platform?: PlatformType,
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Project[]>>
   /**
    * Get a list of unique packages that the given user's repositories list as a dependency. Ordered by frequency of use in those repositories.
@@ -102,7 +102,7 @@ export class GitHubUserAPI {
   public getDependencies(
     userName: string,
     platformOrOptions?: PlatformType | PaginationOptions,
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Project[]>> {
     const endpoint = Endpoint.GitHub.User.contributedRepositories(userName)
     let parameters: RequestOptions = {}

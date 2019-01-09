@@ -15,12 +15,12 @@ export interface Query {
       last?: Int
     },
     info?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ) => Promise<T>
   user: <T = User | null>(
     args: { where: UserWhereUniqueInput },
     info?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ) => Promise<T>
   usersConnection: <T = UserConnection>(
     args: {
@@ -33,12 +33,12 @@ export interface Query {
       last?: Int
     },
     info?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ) => Promise<T>
   node: <T = Node | null>(
     args: { id: ID_Output },
     info?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ) => Promise<T>
 }
 
@@ -46,17 +46,17 @@ export interface Mutation {
   createUser: <T = User>(
     args: { data: UserCreateInput },
     info?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ) => Promise<T>
   updateUser: <T = User | null>(
     args: { data: UserUpdateInput; where: UserWhereUniqueInput },
     info?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ) => Promise<T>
   deleteUser: <T = User | null>(
     args: { where: UserWhereUniqueInput },
     info?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ) => Promise<T>
   upsertUser: <T = User>(
     args: {
@@ -65,17 +65,17 @@ export interface Mutation {
       update: UserUpdateInput
     },
     info?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ) => Promise<T>
   updateManyUsers: <T = BatchPayload>(
     args: { data: UserUpdateManyMutationInput; where?: UserWhereInput },
     info?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ) => Promise<T>
   deleteManyUsers: <T = BatchPayload>(
     args: { where?: UserWhereInput },
     info?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ) => Promise<T>
 }
 
@@ -83,7 +83,7 @@ export interface Subscription {
   user: <T = UserSubscriptionPayload | null>(
     args: { where?: UserSubscriptionWhereInput },
     info?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ) => Promise<AsyncIterator<T>>
 }
 
@@ -98,7 +98,7 @@ export interface Prisma {
   exists: Exists
   request: <T = any>(
     query: string,
-    variables?: { [key: string]: any },
+    variables?: { [key: string]: any }
   ) => Promise<T>
   delegate(
     operation: 'query' | 'mutation',
@@ -107,7 +107,7 @@ export interface Prisma {
       [key: string]: any
     },
     infoOrQuery?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ): Promise<any>
   delegateSubscription(
     fieldName: string,
@@ -115,7 +115,7 @@ export interface Prisma {
       [key: string]: any
     },
     infoOrQuery?: GraphQLResolveInfo | string,
-    options?: Options,
+    options?: Options
   ): Promise<AsyncIterator<any>>
   getAbstractResolvers(filterSchema?: GraphQLSchema | string): IResolvers
 }

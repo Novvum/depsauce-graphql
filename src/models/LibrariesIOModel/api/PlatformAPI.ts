@@ -15,7 +15,7 @@ export class PlatformAPI {
    * @param options Pagination options
    */
   public getPlatforms(
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Platform[]>> {
     const endpoint = Endpoint.platforms()
     return this.requestService.get(endpoint, options)

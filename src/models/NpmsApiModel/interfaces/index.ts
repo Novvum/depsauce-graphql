@@ -1,3 +1,3 @@
-export * from './IPackage';
-export * from './ISearch';
-export * from './ICommon';
+export * from './IPackage'
+export * from './ISearch'
+export * from './ICommon'
