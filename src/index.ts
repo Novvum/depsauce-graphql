@@ -10,6 +10,7 @@ const server = new ApolloServer({
     libs: new LibrariesIO(process.env.PRISMA_LIBIO_KEY),
     npms: new NpmsApiModel(),
   }),
+  tracing: process.env.PRISMA_APP_STAGE === 'production' ? false : true,
   engine: {
     apiKey: 'service:graphql-directory-7184:hV9MEAbFVyJMOFdI-bCbGA',
   },

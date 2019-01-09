@@ -1,5 +1,11 @@
 import { RequestService } from './APIClient'
-import { FilterOptions, SearchParams, SearchCoordinate } from './interfaces'
+import {
+  FilterOptions,
+  SearchParams,
+  SearchCoordinate,
+  ResultElement,
+} from './interfaces'
+import oChain from '../../utils/oChain'
 
 export class SearchModel extends RequestService {
   constructor() {
@@ -45,7 +51,12 @@ export class SearchModel extends RequestService {
   }): Promise<SearchCoordinate> {
     try {
       const params = await this.formatSearchParams(args)
-      return await this.npms.get(`/search?${params}`)
+      const results = await this.npms.get(`/search?${params}`)
+      const search = await this.mapFlags(results.data.results)
+      return {
+        ...results.data,
+        results: search,
+      }
     } catch (e) {
       console.log(e)
       return e
@@ -56,13 +67,30 @@ export class SearchModel extends RequestService {
     query: string
     options?: SearchParams
     filters?: FilterOptions
-  }) {
+  }): Promise<ResultElement[]> {
     try {
       const params = await this.formatSearchParams(args)
-      return await this.npms.get(`/search/suggestions?${params}`)
+      const results = await this.npms.get(`/search/suggestions?${params}`)
+      const suggestions = await this.mapFlags(results.data)
+      console.log(suggestions)
+      return suggestions
     } catch (e) {
       console.log(e)
       return e
     }
+  }
+
+  async mapFlags(data: ResultElement[]): Promise<ResultElement[]> {
+    return await data.map((d: ResultElement) => {
+      const flags = oChain(d.flags)
+      return {
+        ...d,
+        flags: {
+          deprecated: flags.k('deprecated').getOrElse('n/a'),
+          insecure: flags.k('insecure').getOrElse(false),
+          unstable: flags.k('unstable').getOrElse(false),
+        },
+      }
+    })
   }
 }

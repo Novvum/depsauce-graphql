@@ -5,13 +5,13 @@ export const NPMSIO = {
     const search = await ctx.npms.api.search.req({
       ...args,
     })
-    return search.data
+    return search
   },
   async suggestions(_, args, ctx: Context, info) {
     const suggestions = await ctx.npms.api.search.suggestions({
       ...args,
     })
-    return suggestions.data
+    return suggestions
   },
 
   async package(_, args, ctx: Context, info) {
