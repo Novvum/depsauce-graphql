@@ -1,6 +1,6 @@
 dist
 yarn.lock
-database
+prisma
 package-lock.json
 node_modules
 .idea
