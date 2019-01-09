@@ -1,4 +1,6 @@
 dist
+yarn.lock
+database
 package-lock.json
 node_modules
 .idea
@@ -6,4 +8,4 @@ node_modules
 *.log
 .env*
 now.json
-database
+
