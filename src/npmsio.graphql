@@ -129,7 +129,7 @@ type CommitElement {
 }
 
 type PackageCoordinates {
-	analyzedAt: String
+	analyzedAt: DateTime
 	collected: Collected
 	evaluation: Evaluation
 	score: Score
