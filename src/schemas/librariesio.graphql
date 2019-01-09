@@ -1,4 +1,4 @@
-# libraries.io api schema
+# @desc A schema to represent libraries.io's api
 
 type GithubRepository {
 	getRepository(

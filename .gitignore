@@ -1,6 +1,5 @@
 dist
 yarn.lock
-prisma
 package-lock.json
 node_modules
 .idea

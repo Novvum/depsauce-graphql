@@ -1,4 +1,4 @@
-# npms.io api schema
+# @desc A schema to represent npms.io's api
 
 type Popularity {
 	communityInterest: Int

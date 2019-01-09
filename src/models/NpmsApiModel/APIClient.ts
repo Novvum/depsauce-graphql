@@ -1,10 +1,5 @@
-import axios, { AxiosRequestConfig } from 'axios'
-import {
-  SearchParams,
-  SearchCoordinate,
-  FilterOptions,
-  PackageParams,
-} from './interfaces'
+import axios from 'axios'
+import { SearchParams, PackageParams } from './interfaces'
 import qs from 'qs'
 
 export interface RequestParams extends SearchParams, PackageParams {
