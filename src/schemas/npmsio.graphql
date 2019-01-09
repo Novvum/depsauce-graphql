@@ -1,4 +1,4 @@
-# import * from "./generated/prisma.graphql"
+# npms.io api schema
 
 type Popularity {
 	communityInterest: Int

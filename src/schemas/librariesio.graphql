@@ -1,4 +1,4 @@
-# import * from "./generated/prisma.graphql"
+# libraries.io api schema
 
 type GithubRepository {
 	getRepository(

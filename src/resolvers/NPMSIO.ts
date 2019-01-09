@@ -16,11 +16,10 @@ export const NPMSIO = {
 
   async package(_, args, ctx: Context, info) {
     const pkg = await ctx.npms.api.pkg.req(args.name)
-    return pkg.data
+    return pkg
   },
   async packages(_, args, ctx: Context, info) {
     const pkgs = await ctx.npms.api.pkg.mget(args.names)
-    const keys = Object.values(pkgs.data)
-    return keys.map((key: any) => pkgs.data[key])
+    return pkgs
   },
 }

@@ -22,7 +22,7 @@ const resolvers: any = {
 const mergedSchema: MergeSchemaHelper = new MergeSchemaHelper()
 mergedSchema.addSchema(
   makeExecutableSchema({
-    typeDefs: importSchema(path.join(__dirname, '../schema.graphql')),
+    typeDefs: importSchema(path.join(__dirname, '../schemas/schema.graphql')),
     resolvers,
     resolverValidationOptions: {
       requireResolversForResolveType: false,

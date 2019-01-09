@@ -1,6 +1,9 @@
 # import * from "./npmsio.graphql"
 # import * from "./librariesio.graphql"
+
 scalar JSON
+
+scalar DateTime
 
 type Query {
 	lib: LibrariesIO
