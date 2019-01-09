@@ -64,6 +64,7 @@ export interface MetadataSchema {
   date: string
   dependencies: DependenciesSchema
   description: string
+  bundledDependencies: boolean
   devDependencies: DevdependenciesSchema
   hasTestScript: boolean
   keywords: string[]
@@ -80,35 +81,11 @@ export interface MetadataSchema {
 }
 
 export interface DependenciesSchema {
-  iterall: string
+  [dep: string]: string
 }
 
 export interface DevdependenciesSchema {
-  babelCLI: string
-  babelCore: string
-  babelPluginProposalClassProperties: string
-  babelPluginProposalObjectRESTSpread: string
-  babelPluginSyntaxAsyncGenerators: string
-  babelPluginTransformClasses: string
-  babelPluginTransformDestructuring: string
-  babelPluginTransformFlowStripTypes: string
-  babelPluginTransformSpread: string
-  babelPolyfill: string
-  babelPresetEnv: string
-  babelRegister: string
-  babelEslint: string
-  beautifyBenchmark: string
-  benchmark: string
-  chai: string
-  coveralls: string
-  eslint: string
-  eslintPluginFlowtype: string
-  eslintPluginPrettier: string
-  flowBin: string
-  mocha: string
-  nyc: string
-  prettier: string
-  sane: string
+  [dep: string]: string
 }
 
 export interface ReleaseElement {

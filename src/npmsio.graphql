@@ -86,10 +86,11 @@ type ReleaseElement {
 }
 
 type Metadata {
-	date: String
-	dependencies: Dependencies
+	date: DateTime
+	dependencies: JSON
+	bundledDependencies: Boolean
 	description: String
-	devDependencies: Devdependencies
+	devDependencies: JSON
 	hasTestScript: Boolean
 	keywords: [String]
 	license: String
@@ -102,38 +103,6 @@ type Metadata {
 	repository: Repository
 	scope: String
 	version: String
-}
-
-type Dependencies {
-	iterall: String
-}
-
-type Devdependencies {
-	babelCLI: String
-	babelCore: String
-	babelPluginProposalClassProperties: String
-	babelPluginProposalObjectRESTSpread: String
-	babelPluginSyntaxAsyncGenerators: String
-	babelPluginTransformClasses: String
-	babelPluginTransformDestructuring: String
-	babelPluginTransformFlowStripTypes: String
-	babelPluginTransformSpread: String
-	babelPolyfill: String
-	babelPresetEnv: String
-	babelRegister: String
-	babelEslint: String
-	beautifyBenchmark: String
-	benchmark: String
-	chai: String
-	coveralls: String
-	eslint: String
-	eslintPluginFlowtype: String
-	eslintPluginPrettier: String
-	flowBin: String
-	mocha: String
-	nyc: String
-	prettier: String
-	sane: String
 }
 
 type StatusElement {
@@ -238,7 +207,7 @@ type FlagsElement {
 
 type Package {
 	author: Author
-	date: String
+	date: DateTime
 	description: String
 	keywords: [String]
 	links: Links
