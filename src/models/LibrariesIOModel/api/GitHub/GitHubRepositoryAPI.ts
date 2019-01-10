@@ -22,11 +22,11 @@ export class GitHubRepositoryAPI {
    */
   public getRepository(
     repositoryOwner: string,
-    repositoryName: string,
+    repositoryName: string
   ): Promise<LibrariesIOResult<RepositoryWithDependencies>> {
     const endpoint = Endpoint.GitHub.Repository.repository(
       repositoryOwner,
-      repositoryName,
+      repositoryName
     )
     return this.requestService.get(endpoint)
   }
@@ -39,11 +39,11 @@ export class GitHubRepositoryAPI {
    */
   public getRepositoryWithDependencies(
     repositoryOwner: string,
-    repositoryName: string,
+    repositoryName: string
   ): Promise<LibrariesIOResult<RepositoryWithDependencies>> {
     const endpoint = Endpoint.GitHub.Repository.dependencies(
       repositoryOwner,
-      repositoryName,
+      repositoryName
     )
     return this.requestService.get(endpoint)
   }
@@ -58,11 +58,11 @@ export class GitHubRepositoryAPI {
   public getProjects(
     repositoryOwner: string,
     repositoryName: string,
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Project[]>> {
     const endpoint = Endpoint.GitHub.Repository.projects(
       repositoryOwner,
-      repositoryName,
+      repositoryName
     )
     return this.requestService.get(endpoint, options)
   }

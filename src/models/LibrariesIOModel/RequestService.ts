@@ -25,33 +25,33 @@ export class RequestService {
 
   public async delete<T>(
     endpoint: string,
-    parameters?: RequestOptions,
+    parameters?: RequestOptions
   ): Promise<LibrariesIOHeaders> {
     const { rateLimit, rateLimitRemaining } = await this.request<T>(
       'delete',
       endpoint,
-      parameters,
+      parameters
     )
     return { rateLimit, rateLimitRemaining }
   }
 
   public get<T>(
     endpoint: string,
-    parameters?: RequestOptions,
+    parameters?: RequestOptions
   ): Promise<LibrariesIOResult<T>> {
     return this.request<T>('get', endpoint, parameters)
   }
 
   public post<T>(
     endpoint: string,
-    parameters?: RequestOptions,
+    parameters?: RequestOptions
   ): Promise<LibrariesIOResult<T>> {
     return this.request<T>('post', endpoint, parameters)
   }
 
   public put<T>(
     endpoint: string,
-    parameters?: RequestOptions,
+    parameters?: RequestOptions
   ): Promise<LibrariesIOResult<T>> {
     return this.request<T>('put', endpoint, parameters)
   }
@@ -84,7 +84,7 @@ export class RequestService {
             parameterValue = parameterValue.join(',')
           } else if (
             typeof parameterValue === 'object' &&
-            Object.values(parameterValue).some(val => val instanceof Array)
+            Object.values(parameterValue).some((val) => val instanceof Array)
           ) {
             for (const filterKey in parameterValue) {
               const filterValue =
@@ -106,7 +106,7 @@ export class RequestService {
   private async request<T>(
     method: HttpMethod,
     endpoint: string,
-    parameters?: RequestOptions,
+    parameters?: RequestOptions
   ): Promise<LibrariesIOResult<T>> {
     const params = RequestService.mapParameters({
       ...parameters,
@@ -136,14 +136,14 @@ export class RequestService {
           return { data, rateLimit, rateLimitRemaining, totalResults }
         } else {
           throw new InvalidResponseError(
-            'The server responded with invalid data: No JSON sent.',
+            'The server responded with invalid data: No JSON sent.'
           )
         }
       } else if (status === HttpStatus.NO_CONTENT) {
         return { data, rateLimit, rateLimitRemaining }
       } else {
         throw new InvalidResponseError(
-          'The server responded with invalid data: No Content-Type set.',
+          'The server responded with invalid data: No Content-Type set.'
         )
       }
     } catch (error) {

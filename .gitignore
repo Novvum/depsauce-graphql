@@ -1,4 +1,5 @@
 dist
+yarn.lock
 package-lock.json
 node_modules
 .idea
@@ -6,3 +7,4 @@ node_modules
 *.log
 .env*
 now.json
+

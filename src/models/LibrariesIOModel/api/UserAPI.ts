@@ -24,7 +24,7 @@ export class UserAPI {
    */
   public getSubscription(
     platform: PlatformType,
-    projectName: string,
+    projectName: string
   ): Promise<LibrariesIOResult<Subscription | null>> {
     const endpoint = Endpoint.subscriptions(platform, projectName)
     return this.requestService.get(endpoint)
@@ -36,7 +36,7 @@ export class UserAPI {
    * @param options Pagination options
    */
   public getAllSubscriptions(
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Subscription[]>> {
     const endpoint = Endpoint.subscriptions()
     return this.requestService.get(endpoint, options)
@@ -52,7 +52,7 @@ export class UserAPI {
   public subscribe(
     platform: PlatformType,
     projectName: string,
-    options?: PreReleaseOptions,
+    options?: PreReleaseOptions
   ): Promise<LibrariesIOResult<Subscription>> {
     const endpoint = Endpoint.subscriptions(platform, projectName)
     return this.requestService.post(endpoint, options)
@@ -66,7 +66,7 @@ export class UserAPI {
    */
   public unsubscribe(
     platform: PlatformType,
-    projectName: string,
+    projectName: string
   ): Promise<LibrariesIOHeaders> {
     const endpoint = Endpoint.subscriptions(platform, projectName)
     return this.requestService.delete(endpoint)
@@ -82,7 +82,7 @@ export class UserAPI {
   public updateSubscription(
     platform: PlatformType,
     projectName: string,
-    options?: PreReleaseOptions,
+    options?: PreReleaseOptions
   ): Promise<LibrariesIOResult<Subscription>> {
     const endpoint = Endpoint.subscriptions(platform, projectName)
     return this.requestService.put(endpoint, options)

@@ -1,9 +1,11 @@
 import * as jwt from 'jsonwebtoken'
 import { Prisma } from '../generated/prisma'
 import { LibrariesIO } from '../models/LibrariesIOModel'
+import { NpmsApiModel } from '../models/NPMsAPIModel'
 export interface Context {
   db: Prisma
   libs: LibrariesIO
+  npms: NpmsApiModel
   request: any
 }
 

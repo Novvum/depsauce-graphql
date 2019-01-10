@@ -27,7 +27,7 @@ export class ProjectAPI {
    */
   public getProject(
     platform: PlatformType,
-    projectName: string,
+    projectName: string
   ): Promise<LibrariesIOResult<Project>> {
     const endpoint = Endpoint.Project.project(platform, projectName)
     return this.requestService.get(endpoint)
@@ -43,12 +43,12 @@ export class ProjectAPI {
   public getProjectWithDependencies(
     platform: PlatformType,
     projectName: string,
-    projectVersion: string,
+    projectVersion: string
   ): Promise<LibrariesIOResult<ProjectWithDependencies>> {
     const endpoint = Endpoint.Project.dependencies(
       platform,
       projectName,
-      projectVersion,
+      projectVersion
     )
     return this.requestService.get(endpoint)
   }
@@ -63,7 +63,7 @@ export class ProjectAPI {
   public getDependendents(
     platform: PlatformType,
     projectName: string,
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Project[]>> {
     const endpoint = Endpoint.Project.dependents(platform, projectName)
     return this.requestService.get(endpoint, options)
@@ -78,7 +78,7 @@ export class ProjectAPI {
   public getDependendentRepositories(
     platform: PlatformType,
     projectName: string,
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Repository[]>> {
     const endpoint = Endpoint.Project.dependents(platform, projectName)
     return this.requestService.get(endpoint, options)
@@ -94,7 +94,7 @@ export class ProjectAPI {
   public getContributors(
     platform: PlatformType,
     projectName: string,
-    options?: PaginationOptions,
+    options?: PaginationOptions
   ): Promise<LibrariesIOResult<Contributor[]>> {
     const endpoint = Endpoint.Project.dependents(platform, projectName)
     return this.requestService.get(endpoint, options)
@@ -108,7 +108,7 @@ export class ProjectAPI {
    */
   public getSourceRank(
     platform: PlatformType,
-    projectName: string,
+    projectName: string
   ): Promise<LibrariesIOResult<number>> {
     const endpoint = Endpoint.Project.sourceRank(platform, projectName)
     return this.requestService.get(endpoint)
@@ -121,7 +121,7 @@ export class ProjectAPI {
    */
   public getUsage(
     platform: PlatformType,
-    projectName: string,
+    projectName: string
   ): Promise<LibrariesIOResult<ProjectUsage>> {
     const endpoint = Endpoint.Project.sourceRank(platform, projectName)
     return this.requestService.get(endpoint)
@@ -135,7 +135,7 @@ export class ProjectAPI {
    */
   public search(
     query: string,
-    options?: SearchOptions,
+    options?: SearchOptions
   ): Promise<LibrariesIOResult<Project[]>> {
     const endpoint = Endpoint.Project.search()
     return this.requestService.get(endpoint, { ...options, query })

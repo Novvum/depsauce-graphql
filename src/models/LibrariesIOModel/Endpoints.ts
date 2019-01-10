@@ -24,16 +24,16 @@ export namespace Endpoint {
     export function dependencies(
       platform: string,
       name: string,
-      version: string,
+      version: string
     ): string {
       return `/${encode(platform)}/${encode(name)}/${encode(
-        version,
+        version
       )}/${DEPENDENCIES}/`
     }
 
     export function dependentRepositories(
       platform: string,
-      name: string,
+      name: string
     ): string {
       return `/${encode(platform)}/${encode(name)}/${DEPENDENT_REPOSITORIES}/`
     }
