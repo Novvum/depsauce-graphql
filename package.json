@@ -1,5 +1,5 @@
 {
-	"name": "librariesio-graphql",
+	"name": "depsauce-graphql",
 	"scripts": {
 		"start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
 		"dev": "npm-run-all --parallel start playground",
