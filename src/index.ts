@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server'
 import { schema } from './resolvers'
 import { LibrariesIO } from './models/LibrariesIOModel'
-import { NpmsApiModel } from './models/NPMsAPIModel'
+import { NpmsApiModel } from './models/NpmsApiModel'
 
 const server = new ApolloServer({
   schema,
@@ -12,7 +12,8 @@ const server = new ApolloServer({
   }),
   tracing: process.env.DEPSAUCE_APP_STAGE === 'production' ? false : true,
   engine: {
-    apiKey: 'service:graphql-directory-7184:hV9MEAbFVyJMOFdI-bCbGA',
+    apiKey: process.env.ENGINE_API_KEY,
+    schemaTag: process.env.ENGINE_SCHEMA_TAG,
   },
 })
 server.listen().then(({ url }) => {
