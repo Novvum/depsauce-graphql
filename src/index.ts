@@ -12,8 +12,8 @@ const server = new ApolloServer({
   }),
   tracing: process.env.DEPSAUCE_APP_STAGE === 'production' ? false : true,
   engine: {
-    apiKey: process.env.ENGINE_API_KEY,
-    schemaTag: process.env.ENGINE_SCHEMA_TAG,
+    apiKey: process.env.DEPSAUCE_ENGINE_API_KEY,
+    schemaTag: process.env.DEPSAUCE_ENGINE_SCHEMA_TAG,
   },
 })
 server.listen().then(({ url }) => {
