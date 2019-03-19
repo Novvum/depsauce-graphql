@@ -216,7 +216,7 @@ enum SortType {
 
 input FilterOptions {
 	keywords: [String]
-	languages: [String]
+	languages: [LanguageType]
 	licenses: [String]
 	platforms: [PlatformType]
 }
@@ -265,4 +265,37 @@ enum PlatformType {
 	sublime
 	swiftpm
 	wordpress
+}
+
+
+enum LanguageType {
+	JavaScript
+	TypeScript
+	Go
+	PHP
+	Python
+	Java
+	C
+	Clojure
+	Ruby
+	Rust
+	Shell
+	Swift
+	Elixir
+	HTML
+	OCaml
+	Scala
+	Elm
+	Vue
+	CoffeeScript
+	Dart
+	CSS
+	Kotlin
+	Erlang
+	F
+	Perl
+	D
+	Emacs Lisp
+	Haskell
+	Makefile
 }
