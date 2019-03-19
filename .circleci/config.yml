@@ -1,0 +1,87 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+jobs:
+  production:
+    docker:
+      - image: circleci/node:8.10.0
+        environment:
+          STAGE: production
+          NOW_PROJECT: depsauce-graphql
+          NOW_ALIAS: depsauce-graphql.now.sh
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-13.1.2
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-13.1.2
+      - run: yarn deploy
+  
+  staging:
+    docker:
+      - image: circleci/node:8.10.0
+        environment:
+          STAGE: staging
+          NOW_PROJECT: depsauce-graphql-staging
+          NOW_ALIAS: depsauce-graphql-staging.now.sh
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-13.1.2
+            - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-13.1.2
+      - run: yarn deploy
+  
+  publish-apollo:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.10.0
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: yarn install
+      # Start the GraphQL server.  If a different command is used to
+      # start the server, use it in place of `npm start` here.
+      - run:
+          name: Starting server
+          command: yarn start
+          background: true
+      # make sure the server has enough time to start up before running
+      # commands against it
+      - run: sleep 5
+      # When running on the 'master' branch, push the latest version
+      # of the schema to Apollo Engine.
+      - run: |
+          yarn apollo service:push --tag="${CIRCLE_BRANCH}"
+
+workflows:
+  version: 2
+  deploy-publish:
+    jobs:
+      - production:
+          filters:
+            branches:
+              only:
+                - master
+      - staging:
+          filters:
+            branches:
+              ignore:
+                - master
+      - publish-apollo

@@ -5050,9 +5050,9 @@ normalize-url@2.0.1:
     query-string "^5.0.1"
     sort-keys "^2.0.0"
 
-now@^12.1.14:
-  version "12.1.14"
-  resolved "https://registry.yarnpkg.com/now/-/now-12.1.14.tgz#3f56bce02df505eb668343baf2cecf57ca1cc10c"
+now@^14.2.0:
+  version "14.2.0"
+  resolved "https://registry.npmjs.org/now/-/now-14.2.0.tgz#326afe3b18d20b327c4fec330978b858dee019b7"
 
 npm-bundled@^1.0.1:
   version "1.0.5"
