@@ -7,7 +7,8 @@
 		"playground": "graphql playground",
 		"build": "rimraf dist && tsc",
 		"apollo:publish": "apollo schema:publish --endpoint='https://librariesio-graphql.now.sh/' --key='service:graphql-directory-7184:hV9MEAbFVyJMOFdI-bCbGA'",
-		"precommit": "prettier --write *.{ts,tsx} 'src/**/*.{ts,tsx}'"
+		"precommit": "prettier --write *.{ts,tsx} 'src/**/*.{ts,tsx}'",
+		"deploy": "bash ./.scripts/deploy-now.sh"
 	},
 	"dependencies": {
 		"apollo-server": "^2.3.1",
@@ -27,7 +28,7 @@
 		"dotenv-cli": "1.4.0",
 		"graphql-cli": "3.0.4",
 		"nodemon": "1.18.9",
-		"now": "^12.1.14",
+		"now": "^14.2.0",
 		"npm-run-all": "4.1.5",
 		"prettier": "^1.15.3",
 		"prisma": "^1.23.4",
