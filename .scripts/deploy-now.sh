@@ -11,9 +11,10 @@ ALIAS=${NOW_ALIAS:-depsauce-graphql-staging.now.sh}
 
 export PATH="./node_modules/.bin:$PATH"
 # 1. Wait for deployment ready
-URL=$(now -e STAGE=$STAGE -e ENGINE_TAG=$CIRCLE_BRANCH --token "$NOW_TOKEN" --name $PROJECT --scope $TEAM)
+now --target production -A now.$STAGE.json -e STAGE=$STAGE -e ENGINE_TAG=$CIRCLE_BRANCH --token "$NOW_TOKEN" --scope $TEAM
+# URL=$(now -e STAGE=$STAGE -e ENGINE_TAG=$CIRCLE_BRANCH --token "$NOW_TOKEN" --name $PROJECT --scope $TEAM)
 # 2. Alias
-now alias set "$URL" "$ALIAS" --token "$NOW_TOKEN" --scope $TEAM || true
+# now alias set "$URL" "$ALIAS" --token "$NOW_TOKEN" --scope $TEAM || true
 # 3. Purge old services
 now remove $PROJECT --yes --safe --token "$NOW_TOKEN" --scope $TEAM  || true
 

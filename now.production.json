@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "name": "depsauce-graphql",
+  "alias": "depsauce-graphql.now.sh",
+  "env": {
+    "DEPSAUCE_LIBIO_KEY": "24f103aa26ca1bf89661c060b0bdb1d9",
+    "DEPSAUCE_APP_STAGE": "production",
+    "DEPSAUCE_ENGINE_API_KEY": "service:depsauce-graphql:KL6-EH_VFe0p-wQpPj9OaA",
+    "DEPSAUCE_ENGINE_SCHEMA_TAG": "production"
+  },
+  "builds": [
+    {
+      "src": "src/index.ts",
+      "use": "@now/node-server@canary"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/index.ts"
+    }
+  ]
+}
